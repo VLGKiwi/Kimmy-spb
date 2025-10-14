@@ -78,7 +78,7 @@ const CaseForm: FC<CaseFormProps> = ({
     try {
       await axios.post(`https://api.telegram.org/bot${token}/sendMessage`, {
         chat_id: chatId,
-        text: message,
+        text: message + '\nИсточник: spb.kim.agency (Санкт-Петербург)',
       })
       setSuccessMessage({ text: 'Форма успешно отправлена!', isSuccess: true });
       // Очищаем форму после успешной отправки

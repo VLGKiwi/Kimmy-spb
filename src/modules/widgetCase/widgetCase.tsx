@@ -39,7 +39,7 @@ const WidgetCase: FC<WidgetCaseProps> = ({
     try {
       await axios.post(`https://api.telegram.org/bot${token}/sendMessage`, {
         chat_id: chatId,
-        text: message,
+        text: message + '\nИсточник: spb.kim.agency (Санкт-Петербург)',
       })
       setSuccessMessage({ text: 'Форма успешно отправлена!', isSuccess: true });
       // Очищаем форму после успешной отправки
@@ -91,7 +91,7 @@ const WidgetCase: FC<WidgetCaseProps> = ({
                 )}
               </div>
             </form>
-            <p className={styles.form__description}>Нажимая на кнопку &quot;Получить консультацию&quot; Вы соглашаетесь с <Link href='/privacy-policy' target='_blank' style={{ color: '#CB172C'}}>обработкой персональных данных</Link></p>
+            <p className={styles.form__description}>Нажимая на кнопку &quot;Получить консультацию&quot; Вы соглашаетесь с <Link href='/privacy-policy' target='_blank' style={{ color: '#CB172C' }}>обработкой персональных данных</Link></p>
           </div>
         </div>
       </div>
