@@ -1,0 +1,10 @@
+@use "@styles/func";
+@use "@styles/mixins" as *;
+@use "@styles/variables";
+
+.root {
+	margin: 0 12px;
+	
+	display: flex;
+	justify-content: center;
+}

@@ -1,0 +1,153 @@
+@use "@styles/func";
+@use "@styles/mixins" as *;
+
+.root {
+  position: relative;
+  max-width: 1352px;
+  margin: 0 auto;
+  width: 100%;
+  padding-top: func.rem(24);
+  padding-bottom: func.rem(32);
+  padding-left: 20px;
+  padding-right: 20px;
+  color: var(--color-black);
+  background-color: var(--color-white-default);
+
+  @include tablet {
+    padding: 0 10px func.rem(32);
+  }
+}
+
+.vk,
+.telegram {
+  width: 39px;
+  height: 39px;
+
+  @include tablet-small {
+    width: 28px;
+    height: 29px;
+  }
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    max-width: 1312px;
+    width: 100%;
+    margin: 0 20px;
+
+    @include tablet-small {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
+    }
+  }
+}
+
+.information {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  &__list {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__text {
+    font-size: 14px;
+    line-height: 170%;
+    font-weight: 500;
+
+    color: #a8a8a8;
+  }
+
+  &__policy {
+    font-size: 14px;
+    line-height: 170%;
+    font-weight: 600;
+
+    color: #585858;
+    text-decoration: underline;
+  }
+}
+
+.contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+
+  font-size: 16px;
+  line-height: 170%;
+  font-weight: 600;
+
+  text-align: right;
+
+  @include tablet-small {
+    text-align: left;
+    gap: 16px;
+  }
+
+  &__phone {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    color: #4d4d4d;
+  }
+
+  &__mail {
+    color: #898989;
+  }
+}
+
+.palace {
+  display: flex;
+  width: 100%;
+  margin-top: 40px;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  @include tablet-small {
+    margin-top: 20px;
+    align-self: flex-start;
+    justify-content: flex-start;
+    flex-direction: row-reverse;
+  }
+
+  &__text {
+    font-family: var(--font-family-inter);
+    max-width: 246px;
+    font-size: 14px;
+    line-height: 150%;
+    font-weight: 500;
+
+    @include tablet-small {
+      font-size: 12px;
+    }
+  }
+
+  svg {
+    width: 58px;
+    height: 62px;
+
+    @include tablet-small {
+      width: 45px;
+      height: 48px;
+    }
+  }
+}
