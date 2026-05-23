@@ -1,7 +1,7 @@
 'use client'
+import { sendLeadMessage } from '@/shared/api/sendLead'
 import { FC, useState } from 'react'
 import classNames from 'classnames'
-import axios from 'axios'
 
 import styles from './form.module.scss'
 import { FormProps } from './form.types'
@@ -59,15 +59,10 @@ const Form: FC<FormProps> = ({
         return
       }
     }
-    const token = '7862004029:AAFZ807gLMhUIzqjfh4DB62muUmzWv9JfrY'
-    const chatId = '-4654232429'
-    const message = `Новая заявка с ${titleForm} на сайте-визитке:\nИмя: ${data.name}\nТелефон: ${data.phone}${data.mail ? `\nПочта: ${data.mail}` : ''}${data.project ? `\nРасскажите про свой проект: ${data.project}` : ''}${policyConsentTimestamp ? `\nВремя согласия: ${policyConsentTimestamp.toLocaleString()}` : ''}`
+		const message = `Новая заявка с ${titleForm} на сайте-визитке:\nИмя: ${data.name}\nТелефон: ${data.phone}${data.mail ? `\nПочта: ${data.mail}` : ''}${data.project ? `\nРасскажите про свой проект: ${data.project}` : ''}${policyConsentTimestamp ? `\nВремя согласия: ${policyConsentTimestamp.toLocaleString()}` : ''}`
 
     try {
-      await axios.post(`https://api.telegram.org/bot${token}/sendMessage`, {
-        chat_id: chatId,
-        text: message + '\nИсточник: spb.kim.agency (Санкт-Петербург)',
-      })
+      await sendLeadMessage(message + '\nИсточник: spb.kim.agency (Санкт-Петербург)')
       setSuccessMessage({ text: 'Форма успешно отправлена!', isSuccess: true });
       // Очищаем форму после успешной отправки
     } catch (error) {

@@ -1,11 +1,11 @@
 'use client'
+import { sendLeadMessage } from '@/shared/api/sendLead'
 
 import { FC, useState } from 'react'
 import classNames from 'classnames'
 
 import styles from './modalForm.module.scss'
 import { ModalFormProps } from './modalForm.types'
-import axios from 'axios'
 
 import PhoneDef from '../../shared/assets/icons/phone - default.svg'
 import PhoneActive from '../../shared/assets/icons/phone - active.svg'
@@ -76,16 +76,10 @@ const ModalForm: FC<ModalFormProps> = ({ className, development, details, count,
 				return;
 			}
 		}
-
-		const token = '7862004029:AAFZ807gLMhUIzqjfh4DB62muUmzWv9JfrY'
-		const chatId = '-4654232429'
 		const message = `Новая заявка c ${titleForm} на сайте-визитке:\nИмя: ${data.nameModal}\nТелефон: ${data.phoneModal}${data.mailModal ? `\nПочта: ${data.mailModal}` : ''}${data.commentModal ? `\nРасскажите про свой проект: ${data.commentModal}` : ''}${policyConsentTimestamp ? `\nВремя согласия: ${policyConsentTimestamp.toLocaleString()}` : ''}\nПредпочтительный способ связи: ${selectedContactMethod}`
 
 		try {
-			await axios.post(`https://api.telegram.org/bot${token}/sendMessage`, {
-				chat_id: chatId,
-				text: message + '\nИсточник: spb.kim.agency (Санкт-Петербург)',
-			})
+			await sendLeadMessage(message + '\nИсточник: spb.kim.agency (Санкт-Петербург)')
 			setSuccessMessage({ text: 'Форма успешно отправлена!', isSuccess: true });
 			// Очищаем форму после успешной отправки
 		} catch (error) {
